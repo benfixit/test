@@ -34,11 +34,13 @@ class ButtonFactory
     if (class_exists($targetClass) && is_subclass_of($targetClass, $baseClass)) {
       return new $targetClass;
     }else {
-      throw new Exception("The button type of '$type' is not recognized.");
+    	trigger_error("The button type of '$type' is not recognized.", E_USER_NOTICE);
+      //throw new Exception("The button type of '$type' is not recognized.");
 
     }
   }
 }
 
-$instance = ButtonFactory::createButton("flesh");
+$instance = ButtonFactory::createButton("flash");
 echo $instance->getHtml();
+echo "<p>Button Created.</p>";
